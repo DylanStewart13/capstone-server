@@ -19,14 +19,27 @@ let server;
 //  res.header('Access-Control-Allow-Headers', 'Origin,  X-PINGOTHER, Content-Type, Accept, Authorization');
 // next();
 //}
-app.use(cors());
-app.options('*', cors())
+// app.use(cors());
+// app.options('*', cors())
 //app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
 app.use(bodyParser.json({ limit: '20mb' }));
 
 app.use('/api/users/', userRoutes);
 app.use('/api/quizzes/', quizRoutes);
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        callback(null, true);
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
+    credentials: true
+};
+
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
+
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(process.env.DB_URI, {
