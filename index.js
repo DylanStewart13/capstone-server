@@ -14,7 +14,6 @@ let server;
 
 const corsOptions = {
     origin: '*',
-    optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
