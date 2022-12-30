@@ -12,7 +12,11 @@ let server;
 
 // middlware configuration
 
-app.use(cors());
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
 app.use(bodyParser.json({ limit: '20mb' }));
 
