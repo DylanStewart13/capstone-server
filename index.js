@@ -12,10 +12,16 @@ let server;
 
 // middlware configuration
 
-const corsOptions = {
-    origin: '*',
-};
-app.use(cors(corsOptions));
+//CORS middleware
+var allowCrossDomain = function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+app.use(cors());
+app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
 app.use(bodyParser.json({ limit: '20mb' }));
 
