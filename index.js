@@ -13,16 +13,15 @@ let server;
 // middlware configuration
 
 //CORS middleware
-var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin,  X-PINGOTHER, Content-Type, Accept, Authorization');
-
-    next();
-}
+//var allowCrossDomain = function (req, res, next) {
+//  res.header('Access-Control-Allow-Origin', '*');
+//  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//  res.header('Access-Control-Allow-Headers', 'Origin,  X-PINGOTHER, Content-Type, Accept, Authorization');
+// next();
+//}
 app.use(cors());
 app.options('*', cors())
-app.use(allowCrossDomain);
+//app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
 app.use(bodyParser.json({ limit: '20mb' }));
 
