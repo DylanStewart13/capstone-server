@@ -20,7 +20,7 @@ var allowCrossDomain = function (req, res, next) {
 
     next();
 }
-//app.use(cors());
+app.use(cors());
 app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
 app.use(bodyParser.json({ limit: '20mb' }));
