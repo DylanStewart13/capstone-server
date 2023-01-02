@@ -13,16 +13,16 @@ let server;
 // middlware configuration
 
 //CORS middleware
-var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'null');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin,  X-PINGOTHER, Content-Type, Accept, Authorization');
-    next();
-}
-app.use(cors());
-app.options('*', cors())
-app.use(allowCrossDomain);
+// var allowCrossDomain = function (req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Credentials', true);
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Origin,  X-PINGOTHER, Content-Type, Accept, Authorization');
+//     next();
+// }
+// app.use(cors());
+// app.options('*', cors())
+// app.use(allowCrossDomain);
 
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
 app.use(bodyParser.json({ limit: '20mb' }));
@@ -30,17 +30,17 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use('/api/users/', userRoutes);
 app.use('/api/quizzes/', quizRoutes);
 
-// const corsOptions = {
-//     origin: (origin, callback) => {
-//         callback(null, true);
-//     },
-//     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-//     allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
-//     credentials: true
-// };
+const corsOptions = {
+    origin: (origin, callback) => {
+        callback(null, true);
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
+    credentials: false
+};
 
-// app.options('*', cors(corsOptions));
-// app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 
 
 mongoose.set('useCreateIndex', true);
