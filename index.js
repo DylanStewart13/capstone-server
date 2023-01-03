@@ -39,7 +39,7 @@ const corsOptions = {
     credentials: true
 };
 
-app.options('https://bottega-capstone-server.netlify.app/api/users/login', cors(corsOptions));
+app.options('https://capstone-proj.herokuapp.com/api/users/login', cors(corsOptions));
 app.use(cors(corsOptions));
 
 
