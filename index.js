@@ -39,14 +39,14 @@ app.use('/api/quizzes/', quizRoutes);
 // credentials: true
 // };
 
-// app.options('*', cors(corsOptions));
+
 const corsOptions = {
     origin: 'https://bottega-capstone-client.netlify.app/*',
     preflightContinue: false,
 }
 
 app.use(cors(corsOptions));
-
+app.options('*', cors(corsOptions));
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(process.env.DB_URI, {
