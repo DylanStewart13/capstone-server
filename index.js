@@ -40,12 +40,20 @@ app.use('/api/quizzes/', quizRoutes);
 // };
 
 // app.options('*', cors(corsOptions));
-const corsOptions = {
-    origin: 'https://bottega-capstone-client.netlify.app/*',
-    preflightContinue: false,
-}
+// const corsOptions = {
+//     origin: 'https://bottega-capstone-client.netlify.app/*',
+//     preflightContinue: false,
+// }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 
 mongoose.set('useCreateIndex', true);
