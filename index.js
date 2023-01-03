@@ -46,7 +46,8 @@ app.use(cors(corsOptions));
 mongoose.set('useCreateIndex', true);
 mongoose.connect(process.env.DB_URI, {
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useCreateIndex: true
 }).then(() => console.log('Database connection established'))
     .catch(er => console.log('Error connecting to mongodb instance: ', er));
 
