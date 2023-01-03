@@ -41,7 +41,7 @@ app.use('/api/quizzes/', quizRoutes);
 
 // app.options('*', cors(corsOptions));
 const corsOptions = {
-    origin: 'https://bottega-capstone-client.netlify.app',
+    origin: 'https://bottega-capstone-client.netlify.app/*',
     preflightContinue: false,
 }
 
