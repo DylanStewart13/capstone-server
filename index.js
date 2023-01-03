@@ -30,17 +30,17 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use('/api/users/', userRoutes);
 app.use('/api/quizzes/', quizRoutes);
 
-const corsOptions = {
-    origin: '*',
-    //     callback(null, true);
-    // },
-    // methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    // allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
-    // credentials: true
-};
+// const corsOptions = {
+//     origin: '*',
+//     callback(null, true);
+// },
+// methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+// allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
+// credentials: true
+// };
 
 // app.options('*', cors(corsOptions));
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 mongoose.set('useCreateIndex', true);
