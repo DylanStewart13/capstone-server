@@ -39,7 +39,7 @@ const corsOptions = {
     credentials: true
 };
 
-app.options('https://capstone-proj.herokuapp.com/api/users/login', cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
 
