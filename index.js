@@ -27,6 +27,10 @@ let server;
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
 app.use(bodyParser.json({ limit: '20mb' }));
 
+//these lines removed the syntax error for the manifest.json images
+app.use(express.static(path.join(__dirname, 'client', 'build')))
+app.get("/*", (req, res) => { res.sendFile(path.join(__dirname, '/client/public/index.html')); })
+
 app.use('/api/users/', userRoutes);
 app.use('/api/quizzes/', quizRoutes);
 
