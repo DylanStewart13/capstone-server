@@ -26,18 +26,6 @@ app.use(cors());
 app.options('*', cors())
 app.use(allowCrossDomain);
 
-//cache-control header
-let setCache = function (req, res, next) {
-    const period = 60 * 5
-    if (req.method == 'GET') {
-        res.set('Cache-control', `public, max-age=${300}`)
-    } else {
-        res.set('Cache-control', `no-store`)
-    }
-    next()
-}
-app.use(setCache)
-
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
 app.use(bodyParser.json({ limit: '20mb' }));
 
