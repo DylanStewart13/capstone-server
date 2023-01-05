@@ -41,7 +41,7 @@ app.use('/api/quizzes/', quizRoutes);
 
 
 const corsOptions = {
-    origin: 'https://bottega-capstone-client.netlify.app/*',
+    origin: 'https://capstone--client.herokuapp.com/*',
     preflightContinue: false,
 }
 
