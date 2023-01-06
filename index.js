@@ -32,8 +32,8 @@ app.all('*', function (req, res, next) {
 });
 
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(cors());
+// app.options('*', cors(corsOptions));
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(process.env.DB_URI, {
