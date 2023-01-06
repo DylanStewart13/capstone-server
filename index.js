@@ -32,7 +32,7 @@ app.all('*', function (req, res, next) {
 });
 
 
-app.use(cors());
+// app.use(cors());
 // app.options('*', cors(corsOptions));
 
 mongoose.set('useCreateIndex', true);
