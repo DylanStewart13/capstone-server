@@ -14,7 +14,7 @@ let server;
 
 // CORS middleware
 const corsOptions = {
-    origin: 'https://capstone--client.herokuapp.com/*',
+    origin: 'https://capstone--client.herokuapp.com/',
     preflightContinue: false,
 }
 
