@@ -23,10 +23,14 @@ app.use('/api/quizzes/', quizRoutes);
 
 // CORS middleware
 
-const corsOptions = {
-    origin: 'https://capstone--client.herokuapp.com/*',
-    preflightContinue: false,
-}
+//cors and preflight filtering    
+app.all('*', function (req, res, next) {
+    //preflight needs to return exact request-header    
+    res.set('Access-Control-Allow-Headers', req.headers['Access-Control-Request-Headers']);
+    if ('OPTIONS' == req.method)
+        return res.send(204); next();
+});
+
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
@@ -65,3 +69,7 @@ server = app.listen(PORT, () => {
 // app.use(cors());
 // app.options('*', cors())
 // app.use(allowCrossDomain);
+//     const corsOptions = {
+     //     origin: 'https://capstone--client.herokuapp.com/*',
+    //     preflightContinue: false,
+    // }
